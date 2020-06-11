@@ -22,21 +22,27 @@
       }
     },
     // watch: {
-    //   // show(){
-    //   //   this.dialogUser = this.show;
-    //   //   console.log("hello"+this.dialogUser);
-    //   // }
+    //   show(){
+    //     this.dialogUser = this.show;
+    //     console.log("hello"+this.dialogUser);
+    //   }
     // },
     computed: {
-      dialogUser: function(){
-        this.dialogUser = this.show;
-        console.log("hello"+this.dialogUser);
+      dialogUser: {
+        get: function(){
+          return this.show;
+          console.log("hello"+this.dialogUser);
+        },
+        set: function(){
+          this.$emit('closeDialog');
+        }
+
       }
     },
     methods: {
       closeDialog: function(){
         this.dialogUser = false;
-        this.$emit('closeDialog');
+
       }
     }
   }
